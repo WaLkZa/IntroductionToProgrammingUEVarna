@@ -10,16 +10,23 @@ using namespace std;
 по успех.
 */
 
+struct student
+{
+    int facultyNumber;
+    float grade;
+} students[5];
+
+int numberOfStudents = sizeof(students) / sizeof(students[0]);
+
+int students_comparator(const void *s1, const void *s2)
+{
+    //return strcmp(((student *)s1)->name, ((student *)s2) -> name);
+
+    return (*(student *)s2).grade - (*(student *)s1).grade;
+}
+
 int main()
 {
-    struct student
-    {
-        int facultyNumber;
-        float grade;
-    } students[5];
-
-    int numberOfStudents = sizeof(students) / sizeof(students[0]);
-
     for (int i = 0; i < numberOfStudents; i++)
     {
         cin >> students[i].facultyNumber;
@@ -27,17 +34,19 @@ int main()
     }
 
     //bubble sort in descending order
-    for (int i = numberOfStudents; i >= 0; i--)
-    {
-        for (int j = numberOfStudents; j > numberOfStudents - i; j--)
-        {
-            if (students[j].grade > students[j - 1].grade)
-            {
-                swap(students[j].grade, students[j - 1].grade);
-                swap(students[j].facultyNumber, students[j - 1].facultyNumber);
-            }
-        }
-    }
+    // for (int i = numberOfStudents; i >= 0; i--)
+    // {
+    //     for (int j = numberOfStudents; j > numberOfStudents - i; j--)
+    //     {
+    //         if (students[j].grade > students[j - 1].grade)
+    //         {
+    //             swap(students[j].grade, students[j - 1].grade);
+    //             swap(students[j].facultyNumber, students[j - 1].facultyNumber);
+    //         }
+    //     }
+    // }
+
+    qsort(students, sizeof(students), sizeof(student), students_comparator);
 
     for (int i = 0; i < numberOfStudents; i++)
     {

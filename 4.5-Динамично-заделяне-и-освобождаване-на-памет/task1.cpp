@@ -3,15 +3,20 @@
 using namespace std;
 
 /*
-1. Да се напише програма, която декларира масив от 5 цели числа
+1. Да се напише програма, която чете от клавиатурата едно
+цяло число n, след което създава динамичен масив с n числа
 тип int, въвежда ги от клавиатурата, намира и извежда тяхната
 средноаритметична стойност, най-голямата и най-малката стойност.
 */
 
 int main()
 {
-    int inputNumbers[5];
-    int arrInputNumbersSize = sizeof(inputNumbers) / sizeof(inputNumbers[0]);
+    int *inputNumbers;
+    int arrInputNumbersSize;
+
+    cin >> arrInputNumbersSize;
+
+    inputNumbers = new int[arrInputNumbersSize];
 
     for (int i = 0; i < arrInputNumbersSize; i++)
     {
@@ -42,4 +47,6 @@ int main()
     cout << "Average: " << average << endl;
     cout << "Max number: " << maxNum << endl;
     cout << "Min number: " << minNum << endl;
+
+    delete[] inputNumbers;
 }

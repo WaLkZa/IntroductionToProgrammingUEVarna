@@ -19,8 +19,9 @@ int main()
     {
         if (inputNumber % i == 0)
         {
-            printf("%d ", i);
+            cout << i << " ";
         }
+        
         i++;
     }
 }
